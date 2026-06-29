@@ -1,0 +1,1 @@
+Page-level modules can be added here in later phases. The Phase 0 prototype renders directly from App.tsx.
