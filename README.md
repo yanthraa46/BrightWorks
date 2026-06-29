@@ -2,34 +2,35 @@
 
 React frontend for the **NC DHHS Phase 0** dashboard prototype. This repository contains a **prototype-only** UI that demonstrates the dashboard narrative and interactive flows using static demo data.
 
-## What the dashboard prototype does
-The app renders a multi-tab dashboard for leadership-style walkthroughs. It uses a demo-data notice and includes interactive navigation between major narrative sections.
+## Current visible prototype sections (Phase 0)
+The app renders a multi-tab dashboard for leadership-style walkthroughs:
 
-### Major visible sections (current UI)
-- **Prototype notice / demo limitation banner**: communicates that the dashboard is running on static prototype data only.
-- **Tab navigation (multi-page prototype)**:
-  - **Regional Map** (table/map-style narrative section)
-  - **Provider Readiness Summary** (readiness summary and related content)
-  - **Vendor Evaluation** (includes a selection flow to a detail view)
-  - **AI Governance** (includes an alert/summary and governance-related content)
+- **Prototype notice / demo limitation banner**: indicates the dashboard uses static prototype data only.
+- **Regional Map**: table/map-style narrative section.
+- **Provider Readiness Summary**: readiness summary and related content.
+- **Vendor Evaluation**: includes a selection flow that navigates to a detail view.
+- **AI Governance**: includes an alert/summary and governance-related content.
 
-> Note: the repository no longer includes any user-facing section labeled **"Raw UI Style Guide"**.
+> There is **no user-facing section labeled “Raw UI Style Guide”** in the live UI.
 
-## Frontend structure (high level)
-- **React + React Router**: `frontend/src` contains the prototype UI and routing scaffolding used in tests.
-- **Component-level unit/integration tests**: Vitest + Testing Library are used to render the UI and validate interactions and accessibility.
-- **Accessibility checks**: tests run `jest-axe` against rendered UI.
+## Frontend structure
+- **React + React Router** (`frontend/src`): routing and page scaffolding used by the prototype.
+- **Testing**: component/UI tests run with **Vitest + Testing Library**.
+- **Accessibility**: tests include **jest-axe** checks against rendered UI.
 
-## Testing / QA and CI (already set up)
+## Testing / QA and CI
 ### Local QA
-The test suite is run via Vitest.
+Run the frontend QA/test suite from the repo root:
 
-### CI
-GitHub Actions workflow:
+```sh
+npm run qa --prefix frontend
+```
+
+### CI (GitHub Actions)
+This repository uses the frontend QA workflow:
 - `.github/workflows/frontend-qa.yml`
-- Runs on `push` and `pull_request`
-- Uses Node.js **20** and executes the frontend QA script:
-  - `npm run qa` in `frontend/`
+- Triggers: **push** and **pull_request**
+- Executes: `npm run qa` in `frontend/` with **Node.js 20**.
 
 ## Local setup
 From the repo root:
@@ -37,8 +38,6 @@ From the repo root:
 ```sh
 npm ci --prefix frontend
 ```
-
-(If you prefer running commands directly in `frontend/`, `cd frontend` and run the equivalent `npm ci` there.)
 
 ## Commands
 ### Install
@@ -61,16 +60,6 @@ npm run build --prefix frontend
 npm run preview --prefix frontend
 ```
 
-### Lint
-There is currently no lint script defined in `frontend/package.json`. If you add one later, update this section.
-
-### CI
-CI runs the same QA command as above:
-```sh
-npm run qa
-```
-(with working directory set to `frontend/`).
-
-## Notes for developers
-- Prototype content and text such as **"Static prototype / demo data only"** are validated by automated tests.
-- If UI sections are added/removed, update tests that assert on visible headings/buttons.
+## Notes
+- UI headings/buttons and visible flows are validated by automated tests.
+- If you add or remove a visible section/tab, update the corresponding tests.
